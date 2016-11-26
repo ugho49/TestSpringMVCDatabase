@@ -15,8 +15,8 @@ import java.util.List;
  */
 
 @RestControllerAdvice
-@RequestMapping("/api/cities")
-public class CitiesApiController {
+@RequestMapping("/api/city")
+public class CityApiController {
 
     @Autowired
     private CityService cityService;

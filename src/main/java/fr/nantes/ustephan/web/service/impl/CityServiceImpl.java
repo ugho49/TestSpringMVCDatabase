@@ -1,12 +1,15 @@
-package fr.nantes.ustephan.web.service;
+package fr.nantes.ustephan.web.service.impl;
 
 import fr.nantes.ustephan.web.entity.City;
 import fr.nantes.ustephan.web.repository.CityRepository;
+import fr.nantes.ustephan.web.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,7 +64,13 @@ public class CityServiceImpl implements CityService {
     @Override
     @Transactional
     public List<City> findAll() {
-        return cityRepository.findAll();
+        List<Sort.Order> orders = new ArrayList<>();
+        orders.add(new Sort.Order(Sort.Direction.ASC, "countryCode"));
+        orders.add(new Sort.Order(Sort.Direction.ASC, "name"));
+
+        Sort sort = new Sort(orders);
+
+        return cityRepository.findAll(sort);
     }
 
 }
