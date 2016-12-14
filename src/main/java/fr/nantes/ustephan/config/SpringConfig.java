@@ -12,7 +12,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -26,10 +25,9 @@ import java.util.Properties;
  * Created by ughostephan on 26/11/2016.
  */
 @Configuration
-@EnableWebMvc
 @EnableTransactionManagement
-@ComponentScan({ "fr.nantes.ustephan.web" })
-@EnableJpaRepositories(basePackages = "fr.nantes.ustephan.web.repository")
+@ComponentScan({ "fr.nantes.ustephan" })
+@EnableJpaRepositories(basePackages = "fr.nantes.ustephan")
 @PropertySource("classpath:/application.properties")
 public class SpringConfig extends WebMvcConfigurerAdapter {
 
