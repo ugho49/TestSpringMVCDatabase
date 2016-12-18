@@ -5,8 +5,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.nantes.ustephan</groupId>
 	<artifactId>TestSpringMVC</artifactId>
-	<packaging>war</packaging>
+	<packaging>pom</packaging>
 	<version>1.0</version>
+
+	<modules>
+		<module>application</module>
+		<module>world</module>
+	</modules>
+
 	<name>TestSpringMVC</name>
 	<url>http://maven.apache.org</url>
 
@@ -104,6 +110,13 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
