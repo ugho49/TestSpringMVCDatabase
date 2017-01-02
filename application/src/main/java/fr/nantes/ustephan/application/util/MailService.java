@@ -18,6 +18,7 @@ public class MailService {
     @Value("${mail.default.from}")
     private String defaultFrom;
 
+
     /**
      * Send mail with default "from" value.
      *

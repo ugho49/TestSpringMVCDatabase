@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -22,7 +23,6 @@ public class HomeController {
     @Autowired
     private MailService mailService;
 
-
     @RequestMapping("/")
     public String index(ModelMap model) {
         return "index";
@@ -36,12 +36,13 @@ public class HomeController {
     }
 
     @RequestMapping("/sendmail")
-    public String sendMail(ModelMap model) {
+    public String sendMail() {
         mailService.sendMail("to@no-spam.com",
                 "Testing123",
                 "Testing only \n\n Hello Spring Email Sender");
 
         return "index";
     }
+
 
 }
