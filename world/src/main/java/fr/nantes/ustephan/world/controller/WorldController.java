@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +23,14 @@ import java.util.TreeMap;
 public class WorldController {
 
     @Autowired
-    CityService cityService;
+    private CityService cityService;
     @Autowired
-    CountryService countryService;
+    private CountryService countryService;
     @Autowired
-    LanguageService languageService;
+    private LanguageService languageService;
 
     @RequestMapping("/world")
-    public String cities(ModelMap model) {
+    public String world(ModelMap model) {
         List<City> cities = cityService.findAll();
         List<Country> countries = countryService.findAll();
         List<Language> languages = languageService.findAll();
@@ -79,5 +80,4 @@ public class WorldController {
 
         return "world";
     }
-
 }

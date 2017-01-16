@@ -9,9 +9,14 @@ import java.util.List;
  * Created by ughostephan on 26/11/2016.
  */
 public interface CityService {
-    public City create(City city);
-    public City update(City city) throws EntityNotFoundException;
-    public City delete(int id) throws EntityNotFoundException;
-    public City findById(int id);
-    public List<City> findAll();
+    City create(City city);
+    City update(City city) throws EntityNotFoundException;
+    City delete(int id) throws EntityNotFoundException;
+    City findById(int id);
+    List<City> findAll();
+
+    List<City> findAllByCountry(String countryCode);
+
+    List<City> findAllByCriteria(String countryCode, Integer minPopulation, Character firstLetter);
+
 }

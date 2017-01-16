@@ -3,11 +3,9 @@ package fr.nantes.ustephan.world.controller.api;
 import fr.nantes.ustephan.world.entity.City;
 import fr.nantes.ustephan.world.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 
@@ -25,6 +23,18 @@ public class CityApiController {
     @RequestMapping(method = RequestMethod.GET)
     public List<City> findAll() {
         return cityService.findAll();
+    }
+
+    @RequestMapping("/{countryCode}")
+    public List<City> findAllByCountry(@PathVariable String countryCode) {
+        return cityService.findAllByCountry(countryCode);
+    }
+
+    @RequestMapping("/search")
+    public List<City> findAllByCriteria(@RequestParam(value = "countryCode") String countryCode,
+                                       @RequestParam(value = "minPopulation", required = false) Integer minPopulation,
+                                       @RequestParam(value = "firstLetter", required = false) Character firstLetter) {
+        return cityService.findAllByCriteria(countryCode, minPopulation, firstLetter);
     }
 
 }

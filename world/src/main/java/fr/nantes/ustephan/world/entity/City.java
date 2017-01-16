@@ -12,16 +12,16 @@ public class City implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     private String name;
     private String countryCode;
     private String district;
-    private int population;
+    private Integer population;
 
     public City() {
     }
 
-    public City(int id, String name, String countryCode, String district, int population) {
+    public City(Integer id, String name, String countryCode, String district, Integer population) {
         this.id = id;
         this.name = name;
         this.countryCode = countryCode;
@@ -29,11 +29,11 @@ public class City implements Serializable {
         this.population = population;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -61,11 +61,11 @@ public class City implements Serializable {
         this.district = district;
     }
 
-    public int getPopulation() {
+    public Integer getPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(Integer population) {
         this.population = population;
     }
 }

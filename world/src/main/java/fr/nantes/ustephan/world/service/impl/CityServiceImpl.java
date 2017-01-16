@@ -8,7 +8,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +23,9 @@ public class CityServiceImpl implements CityService {
 
     @Autowired
     private CityRepository cityRepository;
+
+    @Autowired
+    private EntityManagerFactory emf;
 
     @Override
     @Transactional
@@ -71,6 +77,55 @@ public class CityServiceImpl implements CityService {
         Sort sort = new Sort(orders);
 
         return cityRepository.findAll(sort);
+    }
+
+    @Override
+    @Transactional
+    public List<City> findAllByCountry(String countryCode) {
+        EntityManager em = emf.createEntityManager();
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("SELECT c FROM City c ");
+        sb.append("WHERE c.countryCode = :code ");
+        sb.append("ORDER BY c.population DESC ");
+
+        Query query = em.createQuery(sb.toString());
+        query.setParameter("code", countryCode);
+        List<City> cities = query.getResultList();
+
+        return cities;
+    }
+
+    @Override
+    public List<City> findAllByCriteria(String countryCode, Integer minPopulation, Character firstLetter) {
+        EntityManager em = emf.createEntityManager();
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("SELECT c FROM City c ");
+        sb.append("WHERE c.countryCode = :countryCode ");
+
+        if (minPopulation != null) {
+            sb.append("AND c.population > :minPopulation ");
+        }
+
+        if (firstLetter != null) {
+            sb.append("AND SUBSTRING(c.name, 1, 1) = :firstLetter ");
+        }
+
+        Query query = em.createQuery(sb.toString());
+        query.setParameter("countryCode", countryCode);
+
+        if (minPopulation != null) {
+            query.setParameter("minPopulation", minPopulation);
+        }
+
+        if (firstLetter != null) {
+            query.setParameter("firstLetter", firstLetter.toString());
+        }
+
+        List<City> cities = query.getResultList();
+
+        return cities;
     }
 
 }
