@@ -10,26 +10,55 @@ public class LanguagePK implements Serializable {
     private String countryCode;
     private String language;
 
+    /**
+     * Instantiates a new Language pk.
+     */
     public LanguagePK() {
     }
 
+    /**
+     * Instantiates a new Language pk.
+     *
+     * @param countryCode the country code
+     * @param language    the language
+     */
     public LanguagePK(String countryCode, String language) {
         this.countryCode = countryCode;
         this.language = language;
     }
 
+    /**
+     * Gets country code.
+     *
+     * @return the country code
+     */
     public String getCountryCode() {
         return countryCode;
     }
 
+    /**
+     * Sets country code.
+     *
+     * @param countryCode the country code
+     */
     public void setCountryCode(String countryCode) {
         this.countryCode = countryCode;
     }
 
+    /**
+     * Gets language.
+     *
+     * @return the language
+     */
     public String getLanguage() {
         return language;
     }
 
+    /**
+     * Sets language.
+     *
+     * @param language the language
+     */
     public void setLanguage(String language) {
         this.language = language;
     }

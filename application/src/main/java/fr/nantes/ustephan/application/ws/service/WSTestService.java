@@ -9,7 +9,19 @@ import java.util.List;
  */
 public interface WSTestService {
 
+    /**
+     * Gets projects.
+     *
+     * @return the projects
+     */
     List<ProjectOutput> getProjects();
+
+    /**
+     * Gets project by id.
+     *
+     * @param id the id
+     * @return the project by id
+     */
     ProjectOutput getProjectById(int id);
 
 }

@@ -1,63 +1,23 @@
-package fr.nantes.ustephan.world.entity;
+package fr.nantes.ustephan.world.form;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 /**
- * Created by ughostephan on 25/11/2016.
+ * Created by ughostephan on 21/01/2017.
  */
-@Entity
-@Table(name = "city")
-public class City implements Serializable {
+public class CityForm {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     private String name;
+
     private String countryCode;
+
     private String district;
+
     private Integer population;
-
-    /**
-     * Instantiates a new City.
-     */
-    public City() {
-    }
-
-    /**
-     * Instantiates a new City.
-     *
-     * @param id          the id
-     * @param name        the name
-     * @param countryCode the country code
-     * @param district    the district
-     * @param population  the population
-     */
-    public City(Integer id, String name, String countryCode, String district, Integer population) {
-        this.id = id;
-        this.name = name;
-        this.countryCode = countryCode;
-        this.district = district;
-        this.population = population;
-    }
-
-    /**
-     * Gets id.
-     *
-     * @return the id
-     */
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     /**
      * Gets name.

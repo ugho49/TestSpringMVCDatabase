@@ -14,7 +14,6 @@ import java.util.List;
 /**
  * Created by ughostephan on 26/11/2016.
  */
-
 @RestController
 @RequestMapping("/api/country")
 public class CountryApiController {
@@ -22,6 +21,11 @@ public class CountryApiController {
     @Autowired
     private CountryService countryService;
 
+    /**
+     * Find all list.
+     *
+     * @return the list
+     */
     @RequestMapping(method = RequestMethod.GET)
     public List<Country> findAll() {
         return countryService.findAll();

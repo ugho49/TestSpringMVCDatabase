@@ -23,6 +23,9 @@ public class WSTestServiceImpl implements WSTestService {
     @Autowired
     private RestTemplate restTemplate;
 
+    /**
+     * Instantiates a new Ws test service.
+     */
     public WSTestServiceImpl() {
     }
 

@@ -22,9 +22,17 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages = "fr.nantes.ustephan")
 public class PersistenceConfig {
 
+    /**
+     * The Env.
+     */
     @Autowired
     Environment env;
 
+    /**
+     * Data source data source.
+     *
+     * @return the data source
+     */
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -37,6 +45,11 @@ public class PersistenceConfig {
         return dataSource;
     }
 
+    /**
+     * Entity manager factory local container entity manager factory bean.
+     *
+     * @return the local container entity manager factory bean
+     */
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
@@ -54,6 +67,11 @@ public class PersistenceConfig {
         return entityManagerFactoryBean;
     }
 
+    /**
+     * Transaction manager jpa transaction manager.
+     *
+     * @return the jpa transaction manager
+     */
     @Bean
     public JpaTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();

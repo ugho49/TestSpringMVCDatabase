@@ -12,7 +12,6 @@ import java.util.List;
 /**
  * Created by ughostephan on 26/11/2016.
  */
-
 @RestController
 @RequestMapping("/api/city")
 public class CityApiController {
@@ -20,16 +19,35 @@ public class CityApiController {
     @Autowired
     private CityService cityService;
 
+    /**
+     * Find all list.
+     *
+     * @return the list
+     */
     @RequestMapping(method = RequestMethod.GET)
     public List<City> findAll() {
         return cityService.findAll();
     }
 
+    /**
+     * Find all by country list.
+     *
+     * @param countryCode the country code
+     * @return the list
+     */
     @RequestMapping("/{countryCode}")
     public List<City> findAllByCountry(@PathVariable String countryCode) {
         return cityService.findAllByCountry(countryCode);
     }
 
+    /**
+     * Find all by criteria list.
+     *
+     * @param countryCode   the country code
+     * @param minPopulation the min population
+     * @param firstLetter   the first letter
+     * @return the list
+     */
     @RequestMapping("/search")
     public List<City> findAllByCriteria(@RequestParam(value = "countryCode") String countryCode,
                                        @RequestParam(value = "minPopulation", required = false) Integer minPopulation,

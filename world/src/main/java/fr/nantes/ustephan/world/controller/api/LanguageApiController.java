@@ -14,7 +14,6 @@ import java.util.List;
 /**
  * Created by ughostephan on 26/11/2016.
  */
-
 @RestController
 @RequestMapping("/api/language")
 public class LanguageApiController {
@@ -22,6 +21,11 @@ public class LanguageApiController {
     @Autowired
     private LanguageService languageService;
 
+    /**
+     * Find all list.
+     *
+     * @return the list
+     */
     @RequestMapping(method = RequestMethod.GET)
     public List<Language> findAll() {
         return languageService.findAll();

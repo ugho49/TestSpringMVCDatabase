@@ -97,6 +97,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
+    @Transactional
     public List<City> findAllByCriteria(String countryCode, Integer minPopulation, Character firstLetter) {
         EntityManager em = emf.createEntityManager();
 
@@ -112,6 +113,8 @@ public class CityServiceImpl implements CityService {
             sb.append("AND SUBSTRING(c.name, 1, 1) = :firstLetter ");
         }
 
+        sb.append("ORDER BY c.name ASC ");
+
         Query query = em.createQuery(sb.toString());
         query.setParameter("countryCode", countryCode);
 
@@ -126,6 +129,12 @@ public class CityServiceImpl implements CityService {
         List<City> cities = query.getResultList();
 
         return cities;
+    }
+
+    @Override
+    @Transactional
+    public List<String> findAllDistinctDistricts() {
+        return cityRepository.findAllDistinctDistricts();
     }
 
 }

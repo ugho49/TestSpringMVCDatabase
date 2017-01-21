@@ -23,11 +23,23 @@ public class HomeController {
     @Autowired
     private MailService mailService;
 
+    /**
+     * Index string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @RequestMapping("/")
     public String index(ModelMap model) {
         return "index";
     }
 
+    /**
+     * Projects string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @RequestMapping("/projects")
     public String projects(ModelMap model) {
         ProjectOutput project = wsTestService.getProjectById(1);
@@ -35,6 +47,11 @@ public class HomeController {
         return "index";
     }
 
+    /**
+     * Send mail string.
+     *
+     * @return the string
+     */
     @RequestMapping("/sendmail")
     public String sendMail() {
         mailService.sendMail("to@no-spam.com",

@@ -15,9 +15,17 @@ import java.util.Properties;
 @Configuration
 public class MailConfig {
 
+    /**
+     * The Env.
+     */
     @Autowired
     Environment env;
 
+    /**
+     * Mail sender java mail sender.
+     *
+     * @return the java mail sender
+     */
     @Bean
     public JavaMailSender mailSender() {
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
