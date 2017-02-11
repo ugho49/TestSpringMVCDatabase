@@ -46,7 +46,7 @@ public class CityServiceImpl implements CityService {
         updatedCity.setDistrict(city.getDistrict());
         updatedCity.setPopulation(city.getPopulation());
 
-        return updatedCity;
+        return cityRepository.saveAndFlush(updatedCity);
     }
 
     @Override
@@ -82,18 +82,7 @@ public class CityServiceImpl implements CityService {
     @Override
     @Transactional
     public List<City> findAllByCountry(String countryCode) {
-        EntityManager em = emf.createEntityManager();
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("SELECT c FROM City c ");
-        sb.append("WHERE c.countryCode = :code ");
-        sb.append("ORDER BY c.population DESC ");
-
-        Query query = em.createQuery(sb.toString());
-        query.setParameter("code", countryCode);
-        List<City> cities = query.getResultList();
-
-        return cities;
+        return cityRepository.findCityByCountry(countryCode);
     }
 
     @Override
@@ -133,8 +122,9 @@ public class CityServiceImpl implements CityService {
 
     @Override
     @Transactional
-    public List<String> findAllDistinctDistricts() {
-        return cityRepository.findAllDistinctDistricts();
+    public List<String> findAllDistinctDistrictsByCountry(String countryCode) {
+        return cityRepository.findAllDistinctDistrictsByCountry(countryCode);
     }
+
 
 }

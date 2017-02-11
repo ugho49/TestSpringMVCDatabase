@@ -1,6 +1,7 @@
 package fr.nantes.ustephan.world.service;
 
 import fr.nantes.ustephan.world.entity.City;
+import org.springframework.data.repository.query.Param;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -69,9 +70,10 @@ public interface CityService {
     List<City> findAllByCriteria(String countryCode, Integer minPopulation, Character firstLetter);
 
     /**
-     * Find all distinct districts list.
+     * Find all distinct districts by country list.
      *
+     * @param countryCode the country code
      * @return the list
      */
-    List<String> findAllDistinctDistricts();
+    List<String> findAllDistinctDistrictsByCountry(String countryCode);
 }

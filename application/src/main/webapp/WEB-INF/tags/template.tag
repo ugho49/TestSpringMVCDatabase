@@ -2,6 +2,8 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@attribute name="title" required="false" type="java.lang.String" %>
+<%@attribute name="style" required="false" fragment="true" %>
+<%@attribute name="script" required="false" fragment="true" %>
 <%@attribute name="content" required="true" fragment="true" %>
 
 <!doctype html>
@@ -25,6 +27,9 @@
 	<spring:url value="/static/css/style.css" var="style_css"/>
 	<link rel="stylesheet" href="${style_css}">
 
+    <!-- Optional stylesheets -->
+    <jsp:invoke fragment="style"/>
+
 </head>
 <body>
 
@@ -47,6 +52,9 @@
 
 	<spring:url value="/static/js/main.js" var="main_js"/>
 	<script src="${main_js}"></script>
+
+    <!-- Optional stylesheets -->
+    <jsp:invoke fragment="script"/>
 
 </body>
 </html>

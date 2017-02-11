@@ -15,10 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -67,6 +64,12 @@ public class WorldController {
         model.addAttribute("languages", languagesOrdered);
 
         return "world";
+    }
+
+    @RequestMapping("/districts/{countryCode}")
+    @ResponseBody
+    public List<String> findAllDistrictsByCountry(@PathVariable String countryCode) {
+        return cityService.findAllDistinctDistrictsByCountry(countryCode);
     }
 
     @RequestMapping("/addCity")

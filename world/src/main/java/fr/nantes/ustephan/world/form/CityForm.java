@@ -1,11 +1,5 @@
 package fr.nantes.ustephan.world.form;
 
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
-
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
-
 /**
  * Created by ughostephan on 21/01/2017.
  */
@@ -16,6 +10,8 @@ public class CityForm {
     private String countryCode;
 
     private String district;
+
+    private String otherDistrict;
 
     private Integer population;
 
@@ -89,5 +85,23 @@ public class CityForm {
      */
     public void setPopulation(Integer population) {
         this.population = population;
+    }
+
+    /**
+     * Gets other district.
+     *
+     * @return the other district
+     */
+    public String getOtherDistrict() {
+        return otherDistrict;
+    }
+
+    /**
+     * Sets other district.
+     *
+     * @param otherDistrict the other district
+     */
+    public void setOtherDistrict(String otherDistrict) {
+        this.otherDistrict = otherDistrict;
     }
 }
