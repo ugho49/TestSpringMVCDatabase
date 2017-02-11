@@ -31,6 +31,7 @@
 		<maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
 		<mail.version>1.4.7</mail.version>
 		<junit.version>4.12</junit.version>
+		<h2.version>1.4.193</h2.version>
 	</properties>
 
 	<parent>
@@ -54,10 +55,9 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>1.4.193</version>
+			<version>${h2.version}</version>
 			<scope>test</scope>
 		</dependency>
-
 
 		<!-- Java Mail API -->
 		<dependency>
