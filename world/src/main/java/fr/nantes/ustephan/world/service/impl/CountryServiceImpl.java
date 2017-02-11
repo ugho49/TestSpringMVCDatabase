@@ -1,5 +1,6 @@
 package fr.nantes.ustephan.world.service.impl;
 
+import fr.nantes.ustephan.world.entity.City;
 import fr.nantes.ustephan.world.entity.Country;
 import fr.nantes.ustephan.world.repository.CountryRepository;
 import fr.nantes.ustephan.world.service.CountryService;
@@ -17,6 +18,12 @@ public class CountryServiceImpl implements CountryService {
 
     @Autowired
     private CountryRepository countryRepository;
+
+    @Override
+    @Transactional
+    public Country create(Country country) {
+        return countryRepository.save(country);
+    }
 
     @Override
     @Transactional

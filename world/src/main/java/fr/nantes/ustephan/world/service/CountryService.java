@@ -8,6 +8,15 @@ import java.util.List;
  * Created by ughostephan on 26/11/2016.
  */
 public interface CountryService {
+
+    /**
+     * Create country.
+     *
+     * @param country the country
+     * @return the country
+     */
+    public Country create(Country country);
+
     /**
      * Find by id country.
      *

@@ -3,14 +3,10 @@ package fr.nantes.ustephan.world.service;
 import fr.nantes.ustephan.UStephanTestConfiguration;
 import fr.nantes.ustephan.world.entity.City;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.jdbc.EmbeddedDatabaseConnection;
-import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -19,7 +15,6 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @ContextConfiguration(classes = UStephanTestConfiguration.class)
 @RunWith(SpringRunner.class)
-@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 @DataJpaTest
 public class CityServiceTest {
 
